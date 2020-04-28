@@ -118,24 +118,24 @@ void forcabruta(char palavras[], char frase[])
 	
 	
 	
-	int tPalavra = strlen(palavras); //Define tamanho da string
-    int tFrase = strlen(frase); //Define tamanho da frase que busca
+	int tPalavra = strlen(palavras); 
+    int tFrase = strlen(frase); 
     
-    int cont = 0; //Contador para conclusÃ£o
-    int k = 0; //contador usado na string e na frase
-    int j = 0; //Contador usado na frase
-    int i = 0; //Contador usado na string
+    int cont = 0; 
+    int k = 0; 
+    int j = 0; 
+    int i = 0; 
 
-    for (i=0;  i < tPalavra - tFrase; i++) { //Define o tamanho da string qual ainda Ã© valido tentar a comparaÃ§Ã£o, e define primeira letra da string.
+    for (i=0;  i < tPalavra - tFrase; i++) { 
         k=i;  cont=1;
-        for(j=0 ; j < tFrase; j++) { //Define primeira letra da string
-            if ((palavras[k]==frase[j])  && (cont != tFrase)){ //Compara primeira letra da frase com a posiÃ§Ã£o atual da string
-            cont++;k++; //Se igual soma o contador para conclusÃ£o e a posiÃ§Ã£o da string (k)
-            }//Ao retornar para o for soma a posiÃ§Ã£o da frase (j)
-        }//Ao retornar para o primeiro for soma a posiÃ§Ã£o da string (i)
-            if (cont == tFrase){ //Se o tamanho do contador de conclusÃ£o somar ate chegar ao tamanho da frase quer dizer que a string foi encontrada.
-                printf(" > A frase mencionada comeca na posicao %d e termina na posicao %d do array.\n > ", i, k); //Imprimi a posicao de inicio e fim
-                for (i; i <= k; i++){ //Imprimir cada letra
+        for(j=0 ; j < tFrase; j++) {
+            if ((palavras[k]==frase[j])  && (cont != tFrase)){ 
+            cont++;k++; 
+            }
+        }
+            if (cont == tFrase){ 
+                printf(" > A frase mencionada comeca na posicao %d e termina na posicao %d do array.\n > ", i, k); 
+                for (i; i <= k; i++){ 
                     printf("%c", palavras[i]);
                 }
                 printf("\n\n\n");
@@ -145,7 +145,7 @@ void forcabruta(char palavras[], char frase[])
     }
     printf(" > Frase nao foi encontrada.\n");
     system("pause");
-    return 0; //Finaliza com o resultado NUll OK
+    return 0; 
 	
 }
 
@@ -158,15 +158,15 @@ void rabinkarp(char palavras[], char frase[]){
 	
 	
     int d = 256, q = 29;
-    int tPalavra = strlen(palavras); //Define tamanho da string
-    int tFrase = strlen(frase); //Define tamanho da frase que busca
+    int tPalavra = strlen(palavras); 
+    int tFrase = strlen(frase);
     int i, h = 1;
-    int hPalavra = 0; //Hash (tamanho) para string
-    int hFrase = 0; //Hash (tamanho) para frase
+    int hPalavra = 0;
+    int hFrase = 0;
 
     for (i = 0; i < tFrase - 1; i++)
         h = d * h % q;
-    //Calcula o valor do hash da frase e o primeiro da string (palavra)
+    
     for (i = 0; i < tFrase; i++)
     {
         hFrase = (d * hFrase + frase[i]) % q;
@@ -175,7 +175,7 @@ void rabinkarp(char palavras[], char frase[]){
 
     for (i = 0; i <= tPalavra - tFrase; i++)
     {
-        if (hFrase == hPalavra) //Compara o hash da string atual com o hash da frase, se for igual ele compara cada caractere para garantir que a frase corresponde a string.
+        if (hFrase == hPalavra) 
         {
             int j;
             for (j = 0; j < tFrase; j++)
@@ -183,10 +183,10 @@ void rabinkarp(char palavras[], char frase[]){
                 if (frase[j] != palavras[i + j])
                     break;
             }
-            if (tFrase == j){ //Se o tamanho da String (tFrase) for do mesmo tamanho do (j) quer dizer que a string foi encontrada.
-                int k = i + tFrase -1; //Calcula posiÃ§Ã£o final da frase para imprimir na tela
-                printf(" > A frase mencionada comeca na posicao %d e termina na posicao %d do array.\n > ", i, k); //Imprimi a posicao de inicio e fim
-                for (i; i <= k; i++){ //Imprimir cada letra
+            if (tFrase == j){ 
+                int k = i + tFrase -1; 
+                printf(" > A frase mencionada comeca na posicao %d e termina na posicao %d do array.\n > ", i, k);
+                for (i; i <= k; i++){ 
                     printf("%c", palavras[i]);
                 }
                 
